@@ -1,5 +1,6 @@
 # hpc_lecture
-
+21M30695
+Tomoya Takahashi
 |          | Topic                                | Sample code               |
 | -------- | ------------------------------------ | ------------------------- |
 | Class 1  | Introduction to parallel programming |                           |

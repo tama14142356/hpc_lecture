@@ -17,8 +17,11 @@ void merge(std::vector<T>& vec, int begin, int mid, int end) {
     else
       tmp[i] = vec[right++]; 
   }
-  for (int i=0; i<tmp.size(); i++) 
-    vec[begin++] = tmp[i];
+#pragma omp parallel for shared(vec) 
+  for (int i=0; i<tmp.size(); i++){
+    int index = begin + i;
+    vec[index] = tmp[i];
+  } 
 }
 
 template<class T>
@@ -27,6 +30,7 @@ void merge_sort(std::vector<T>& vec, int begin, int end) {
     int mid = (begin + end) / 2;
 #pragma omp task shared(vec)
     merge_sort(vec, begin, mid);
+#pragma omp task shared(vec)
     merge_sort(vec, mid+1, end);
 #pragma omp taskwait
     merge(vec, begin, mid, end);
