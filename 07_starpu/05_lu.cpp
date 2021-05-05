@@ -2,15 +2,14 @@
 #include <cstdlib>
 #include <cstdio>
 #include <vector>
-#include <chrono>
 
-#include "mkl_cblas.h"
-#include "mkl_lapacke.h"
+#include <mkl_cblas.h>
+#include <mkl_lapacke.h>
 
 using namespace std;
 
 int main() {
-  int N = 256;
+  int N = 16;
   vector<double> A(N*N);
   vector<double> x(N);
   vector<double> b(N);
